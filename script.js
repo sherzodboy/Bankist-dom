@@ -30,6 +30,34 @@ btnScrollTo.addEventListener('click', () => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+// Page navigation
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+// Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  tabs.forEach((t) => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach((c) => c.classList.remove('operations__content--active'));
+
+  clicked.classList.add('operations__tab--active');
+
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 // !Lecture
 // const header = document.querySelector('.header');
 // const allSections = document.querySelectorAll('.section');
@@ -68,4 +96,41 @@ logo.setAttribute('company', 'Bankist');
 console.log(logo.getAttribute('src'));
 
 console.log(logo.dataset.versionNumber);
+*/
+
+/*
+const h1 = document.querySelector('h1');
+
+const logger1 = () => {
+  alert('clicked 1');
+};
+
+h1.addEventListener('mouseenter', logger1);
+
+setTimeout(() => {
+  return h1.removeEventListener('mouseenter', logger1);
+}, 5000);
+*/
+
+/*
+// Dom traversing
+const h1 = document.querySelector('h1');
+
+console.log(h1.querySelectorAll('.highlight'));
+
+console.log(h1.childNodes);
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'red';
+h1.lastElementChild.style.color = 'blue';
+
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'green';
+
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.parentElement.children);
 */
