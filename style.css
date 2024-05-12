@@ -105,6 +105,10 @@ img {
   transition: filter 0.5s;
 }
 
+a {
+  display: inline-block;
+}
+
 .lazy-img {
   filter: blur(20px);
 }
